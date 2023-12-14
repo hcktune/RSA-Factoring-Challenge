@@ -3,12 +3,16 @@
 import sys
 
 file_numbers = sys.argv[1]
-
-with open(file_numbers, 'r') as file:
-    for line in file:
-        n = int(line)
-        for i in range(2, int((n / 2) + 1) ):
-            if n % i == 0:
-                q = int(n / i)
-                print("{}={}*{}".format(n, q , i))
-                break
+try:
+    with open(file_numbers, 'r') as file:
+        for line in file:
+            n = int(line)
+            for i in range(2, int((n / 2) + 1) ):
+                if n % i == 0:
+                    q = int(n / i)
+                    print("{}={}*{}".format(n, q , i))
+                    break
+except FileNotFoundError:
+    print(f"Error: File '{file_numbers}' not found.")
+except Exception as e:
+    print(f"Error: {e}")
